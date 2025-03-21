@@ -25,10 +25,11 @@ router.get('/login', (req, res) => {
 });
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
-    if (email) {
-        res.send(email.toUpperCase());
+    if (email && password && email === 'teste@teste.com' && password === 'password') {
+        req.session = { loggedIn: true }; //middleware cookies-session nessa condição de login
+        res.redirect('/'); //Redireciona o usuário após logado para home
     }
     else {
-        res.send("You must provide an email");
+        res.send("Invalid email or password");
     }
 });
