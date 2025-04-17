@@ -11,6 +11,4 @@ const app = (0, express_1.default)();
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use((0, cookie_session_1.default)({ keys: ['testkey'] }));
 app.use(loginRoutes_1.router);
-app.listen(3000, () => {
-    console.log("Server On");
-});
+app.listen(3000, () => { });
