@@ -1,12 +1,9 @@
-//define decorators como GET, POST, DELETE, ETC..
-
+// routes.ts
 import 'reflect-metadata'
 
-//decorators para rotas GET
+// Decorador para métodos GET
 export function get(path: string) {
-  return function (target: any, key: string, desc:PropertyDescriptor){
-    
-    //define o metadado 'path' para o método decorado
-    Reflect.defineMetadata('path', path, target, key)
+  return function (target: any, key: string, descriptor: PropertyDescriptor) {
+    Reflect.defineMetadata('path', path, target, key) // Isso está correto.
   }
 }

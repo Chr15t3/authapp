@@ -1,20 +1,20 @@
-import 'reflect-metadata' //Habilita o uso de metadados reflect
+// controller.ts
+import 'reflect-metadata'
 import express from 'express'
 
 export const router = express.Router()
 
-//decorator de classe que recebe um prefixo de rota
-export function controller(routePrefix: string){
-  return function(target: Function){
+export function controller(routePrefix: string) {
+  return function (target: Function) {
+    const prototype = target.prototype
 
-    //itera sobre os métodos do prototype da classe
-    for(let key in target.prototype){
-      const routeHandler = target.prototype[key]
+    for (let key of Object.getOwnPropertyNames(prototype)) {
+      const routeHandler = prototype[key]
 
-    //recupera o metadado 'path' do método
-      const path = Reflect.getMetadata('path', target.prototype, key)
-      
-      if (path){
+      const path: string = Reflect.getMetadata('path', prototype, key)
+
+      if (path) {
+        console.log(`Registrando rota GET ${routePrefix}${path}`)
         router.get(`${routePrefix}${path}`, routeHandler)
       }
     }

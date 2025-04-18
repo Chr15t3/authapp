@@ -1,12 +1,11 @@
 "use strict";
-//define decorators como GET, POST, DELETE, ETC..
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.get = get;
+// routes.ts
 require("reflect-metadata");
-//decorators para rotas GET
+// Decorador para métodos GET
 function get(path) {
-    return function (target, key, desc) {
-        //define o metadado 'path' para o método decorado
-        Reflect.defineMetadata('path', path, target, key);
+    return function (target, key, descriptor) {
+        Reflect.defineMetadata('path', path, target, key); // Isso está correto.
     };
 }

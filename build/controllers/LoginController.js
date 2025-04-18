@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LoginController = void 0;
 const routes_1 = require("./decorators/routes");
 const controller_1 = require("./decorators/controller");
 let LoginController = class LoginController {
@@ -32,12 +33,13 @@ let LoginController = class LoginController {
           `); //Se entrar no localhost:3000/login preenchermos e clicarmos, enviará uma solicitação POST para fazer o login
     }
 };
+exports.LoginController = LoginController;
 __decorate([
     (0, routes_1.get)('/login'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], LoginController.prototype, "getLogin", null);
-LoginController = __decorate([
+exports.LoginController = LoginController = __decorate([
     (0, controller_1.controller)('/auth')
 ], LoginController);
