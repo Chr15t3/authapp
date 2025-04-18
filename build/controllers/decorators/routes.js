@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.get = get;
-// routes.ts
 require("reflect-metadata");
 // Decorador para métodos GET
 function get(path) {

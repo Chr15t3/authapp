@@ -1,11 +1,13 @@
-// controller.ts
-import 'reflect-metadata'
-import express from 'express'
 
-export const router = express.Router()
+import 'reflect-metadata'
+import { AppRouter } from "../../AppRouter";
+
+
 
 export function controller(routePrefix: string) {
   return function (target: Function) {
+    const router = AppRouter.getInstance()
+
     const prototype = target.prototype
 
     for (let key of Object.getOwnPropertyNames(prototype)) {

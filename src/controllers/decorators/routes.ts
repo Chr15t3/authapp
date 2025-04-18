@@ -1,4 +1,4 @@
-// routes.ts
+
 import 'reflect-metadata'
 
 // Decorador para métodos GET
