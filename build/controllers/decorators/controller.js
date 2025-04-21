@@ -10,9 +10,10 @@ function controller(routePrefix) {
         for (let key of Object.getOwnPropertyNames(prototype)) {
             const routeHandler = prototype[key];
             const path = Reflect.getMetadata('path', prototype, key);
+            const method = Reflect.getMetadata('method', prototype, key);
             if (path) {
                 console.log(`Registrando rota GET ${routePrefix}${path}`);
-                router.get(`${routePrefix}${path}`, routeHandler);
+                router[method](`${routePrefix}${path}`, routeHandler);
             }
         }
     };

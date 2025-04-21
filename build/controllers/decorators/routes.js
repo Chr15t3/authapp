@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.patch = exports.del = exports.post = exports.put = exports.get = void 0;
 require("reflect-metadata");
+const Methods_1 = require("./Methods");
 // Decorador para métodos GET
 function routeBinder(method) {
     return function get(path) {
@@ -11,8 +12,8 @@ function routeBinder(method) {
         };
     };
 }
-exports.get = routeBinder('get');
-exports.put = routeBinder('put');
-exports.post = routeBinder('post');
-exports.del = routeBinder('get');
-exports.patch = routeBinder('patch');
+exports.get = routeBinder(Methods_1.Methods.get);
+exports.put = routeBinder(Methods_1.Methods.put);
+exports.post = routeBinder(Methods_1.Methods.post);
+exports.del = routeBinder(Methods_1.Methods.del);
+exports.patch = routeBinder(Methods_1.Methods.patch);

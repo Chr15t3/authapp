@@ -1,7 +1,7 @@
 
 import 'reflect-metadata'
 import { AppRouter } from "../../AppRouter";
-
+import { Methods } from "./Methods";
 
 
 export function controller(routePrefix: string) {
@@ -14,10 +14,12 @@ export function controller(routePrefix: string) {
       const routeHandler = prototype[key]
 
       const path: string = Reflect.getMetadata('path', prototype, key)
+      const method: Methods = Reflect.getMetadata('method', prototype, key)
+      
 
       if (path) {
         console.log(`Registrando rota GET ${routePrefix}${path}`)
-        router.get(`${routePrefix}${path}`, routeHandler)
+        router[method](`${routePrefix}${path}`, routeHandler)
       }
     }
   }
