@@ -1,10 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.get = get;
+exports.patch = exports.del = exports.post = exports.put = exports.get = void 0;
 require("reflect-metadata");
 // Decorador para métodos GET
-function get(path) {
-    return function (target, key, descriptor) {
-        Reflect.defineMetadata('path', path, target, key); // Isso está correto.
+function routeBinder(method) {
+    return function get(path) {
+        return function (target, key, desc) {
+            Reflect.defineMetadata('path', path, target, key); // Isso está correto.
+            Reflect.defineMetadata('method', method, target, key);
+        };
     };
 }
+exports.get = routeBinder('get');
+exports.put = routeBinder('put');
+exports.post = routeBinder('post');
+exports.del = routeBinder('get');
+exports.patch = routeBinder('patch');
