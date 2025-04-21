@@ -3,12 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.patch = exports.del = exports.post = exports.put = exports.get = void 0;
 require("reflect-metadata");
 const Methods_1 = require("./Methods");
+const MetadataKeys_1 = require("./MetadataKeys");
 // Decorador para métodos GET
 function routeBinder(method) {
     return function get(path) {
         return function (target, key, desc) {
-            Reflect.defineMetadata('path', path, target, key); // Isso está correto.
-            Reflect.defineMetadata('method', method, target, key);
+            Reflect.defineMetadata(MetadataKeys_1.MetadataKeys.path, path, target, key); // Isso está correto.
+            Reflect.defineMetadata(MetadataKeys_1.MetadataKeys.method, method, target, key);
         };
     };
 }

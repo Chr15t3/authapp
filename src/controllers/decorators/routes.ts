@@ -1,13 +1,14 @@
 
 import 'reflect-metadata'
 import { Methods } from "./Methods";
+import { MetadataKeys } from "./MetadataKeys";
 
 // Decorador para métodos GET
 function routeBinder(method: string){ //Retorna um Decorator Fábrica
  return function get(path: string) {
   return function (target: any, key: string, desc: PropertyDescriptor) {
-    Reflect.defineMetadata('path', path, target, key) // Isso está correto.
-    Reflect.defineMetadata('method', method, target, key)
+    Reflect.defineMetadata(MetadataKeys.path, path, target, key) // Isso está correto.
+    Reflect.defineMetadata(MetadataKeys.method, method, target, key)
     }
   }
 }
