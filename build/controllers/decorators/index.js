@@ -17,3 +17,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 //arquivo para importar e exportar tudo do controller e routes.
 __exportStar(require("./controller"), exports);
 __exportStar(require("./routes"), exports);
+__exportStar(require("./use"), exports);

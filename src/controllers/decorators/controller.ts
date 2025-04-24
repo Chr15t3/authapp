@@ -16,7 +16,7 @@ export function controller(routePrefix: string) {
 
       const path: string = Reflect.getMetadata(MetadataKeys.path, prototype, key)
       const method: Methods = Reflect.getMetadata(MetadataKeys.method, prototype, key)
-      const middlewares = Reflect.getMetadata(MetadataKeys.middleware, target, key) || []
+      const middlewares = Reflect.getMetadata(MetadataKeys.middleware, prototype, key) || []
       
 
       if (path) {
