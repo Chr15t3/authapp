@@ -31,6 +31,16 @@ let LoginController = class LoginController {
           
           `); //Se entrar no localhost:3000/login preenchermos e clicarmos, enviará uma solicitação POST para fazer o login
     }
+    postLogin(req, res) {
+        const { email, password } = req.body;
+        if (email && password && email === 'teste@teste.com' && password === 'password') {
+            req.session = { loggedIn: true }; //middleware cookies-session nessa condição de login
+            res.redirect('/'); //Redireciona o usuário após logado para home
+        }
+        else {
+            res.send("Invalid email or password");
+        }
+    }
 };
 exports.LoginController = LoginController;
 __decorate([
@@ -39,6 +49,13 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], LoginController.prototype, "getLogin", null);
+__decorate([
+    (0, decorators_1.post)('/login'),
+    (0, decorators_1.bodyValidator)('email', 'password'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], LoginController.prototype, "postLogin", null);
 exports.LoginController = LoginController = __decorate([
     (0, decorators_1.controller)('/auth')
 ], LoginController);

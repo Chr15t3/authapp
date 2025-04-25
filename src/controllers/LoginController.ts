@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response  } from "express";
-import { get, controller } from "./decorators";
+import { get, controller, bodyValidator, post } from "./decorators";
 
 
 
@@ -25,5 +25,21 @@ export class LoginController {
           
           
           `) //Se entrar no localhost:3000/login preenchermos e clicarmos, enviará uma solicitação POST para fazer o login
+  }
+
+  @post('/login')
+  @bodyValidator('email', 'password')
+  postLogin (req: Request, res: Response) {
+      const { email, password } = req.body
+  
+      if(email && password && email === 'teste@teste.com' && password === 'password'){
+          
+          req.session = { loggedIn: true }//middleware cookies-session nessa condição de login
+         
+          res.redirect('/')  //Redireciona o usuário após logado para home
+      } else {
+          res.send("Invalid email or password")
+      }
+  
   }
 }
